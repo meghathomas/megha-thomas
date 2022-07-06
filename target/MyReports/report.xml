@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="2" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="9" time="26.631">
+    <testcase classname="Pet - Add a new pet, update pet details, fetch pet details and delete added pet" name="Add pet details, update details and fetch details of pet" time="5.978">
+        <system-out><![CDATA[Given Create new pet information and validate...............................passed
+When Update the Pet info with below data and Validate.......................passed
+Then Fetch pet info by status and validate if updated pet with "available" exists for "100".passed
+And Fetch pet info with pet ID "100"........................................passed
+And Upload a pet image "\src\test\resources\image\image1.jpg" by "100"......passed
+And Delete the pet by id "100"..............................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="Store - create new order, view &amp; delete created order" name="Create new order, view &amp; delete created order" time="2.646">
+        <system-out><![CDATA[Given Place an order for a  pet.............................................passed
+When Fetch order information by "1".........................................passed
+Then Delete order by "1"....................................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="Store - Inventory" name="Validate inventory - Positive Scenario" time="0.632">
+        <system-out><![CDATA[Given I hit the "/store/inventory"..........................................passed
+When Request should submit and Positive API response should received "200"..passed
+Then Inventory data should display..........................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="Store - Inventory" name="Validate inventory - Negative Scenario" time="0.655">
+        <system-out><![CDATA[Given I hit the "/store/invent".............................................passed
+When Request should submit and Positive API response should received "404"..passed
+Then Inventory data should display..........................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="User - Login &amp; Logout Operations" name="Valid user can login and logout to the application using API" time="1.572">
+        <system-out><![CDATA[Given I provide login credentials "test" and "test@123".....................passed
+When I send request to login................................................passed
+Then login is successful....................................................passed
+And logout is successful....................................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="User - Login &amp; Logout Operations" name="Valid user with wrong password can not login to the application using API" time="0.656">
+        <failure message="Invalid user credentials expected:&lt;401&gt; but was:&lt;200&gt;" type="java.lang.AssertionError"><![CDATA[Given I provide login credentials "test" and "abc122".......................passed
+When I send request to login................................................passed
+Then login failed...........................................................failed
+
+StackTrace:
+java.lang.AssertionError: Invalid user credentials expected:<401> but was:<200>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at common.users.LoginAPI.verifyLoginFailure(LoginAPI.java:47)
+	at stepDefinitions.user.LoginLogoutStepDefn.loginFailed(LoginLogoutStepDefn.java:64)
+	at ✽.login failed(file:///D:/FinalProjects/N26_PetStoreAPI/src/test/java/features/user/Login.feature:16)
+]]></failure>
+    </testcase>
+    <testcase classname="User - Login &amp; Logout Operations" name="Unauthorized user can not login to the application using API" time="0.647">
+        <failure message="Invalid user credentials expected:&lt;401&gt; but was:&lt;200&gt;" type="java.lang.AssertionError"><![CDATA[Given I provide login credentials "test-user" and "abc122"..................passed
+When I send request to login................................................passed
+Then login failed...........................................................failed
+
+StackTrace:
+java.lang.AssertionError: Invalid user credentials expected:<401> but was:<200>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at common.users.LoginAPI.verifyLoginFailure(LoginAPI.java:47)
+	at stepDefinitions.user.LoginLogoutStepDefn.loginFailed(LoginLogoutStepDefn.java:64)
+	at ✽.login failed(file:///D:/FinalProjects/N26_PetStoreAPI/src/test/java/features/user/Login.feature:25)
+]]></failure>
+    </testcase>
+    <testcase classname="User Actions - create new user, view &amp; update existing user information and delete the user" name="Create new user &amp; view, update, delete the created user" time="11.729">
+        <system-out><![CDATA[Given I provide below login information.....................................passed
+When I send request to crete user...........................................passed
+Then Create user is successful..............................................passed
+And Allow to fetch the user details by "testuser"...........................passed
+And Allow to updated the First name "pet" where Username "testuser".........passed
+And Allow to updated the Last name "store" where Username "testuser"........passed
+And Allow to updated the Email "petstore@gmail.com" where Username "testuser".passed
+And Allow to updated password "test1234" where Username "testuser"..........passed
+And Allow to updated phone number "987654321" where Username "testuser".....passed
+And Delete the user with username "testuser"................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="Creation of multiple users" name="Create multiple user with List" time="1.884">
+        <system-out><![CDATA[Given Create multiple user using below details using List...................passed
+When Send request to crete user with list...................................passed
+Then Create user is successful with list....................................passed
+And Fetch the list of user details by "testuser3"...........................passed
+And Fetch the list of user details by "testuser4"...........................passed
+]]></system-out>
+    </testcase>
+</testsuite>
